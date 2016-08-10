@@ -29,7 +29,7 @@ end
 
 function CoreBuilder:addNVertices (n)
   for i=1,n do
-    self.g:add{Vertex.new{}}
+    self.g:add{Vertex.new{name=tostring(#self.g.vertices+1)}}
   end
 end
 

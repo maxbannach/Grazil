@@ -13,17 +13,29 @@ ans = {}
 
 while true do
 
+  io.write("grazil " .. #ans+1 .. "> ")
   local line = io.read ()
 
-  local fun = load ("ans[" .. #ans+1 .. "] = (" .. line .. ")")
+  local fun
+  local success 
+  if line:match("^%s*%w*%s*=") then
+    fun = load ("" .. line .. "")
+    success = pcall(fun)
+    __result = _G[line:match("^%s*(%w*)%s=")]
+  else		  
+    fun = load ("__result = (" .. line .. ")")
+    success = pcall(fun)
+  end
 
-  local x = pcall(fun)
-  ans[#ans+1] = x
-
-  if not x then
-    print("Unknown command: " .. line)
+  if not success then
+    print("Command failed: " .. line)
   else
-    print("ans[" .. #ans .. "] = " .. tostring(ans[#ans]))
+    if __result == nil then
+      ans[#ans+1] = "no result"
+    else
+      ans[#ans+1] = __result
+      print("  ans[" .. #ans .. "] = " .. tostring(ans[#ans]))
+    end
   end
   
 end
