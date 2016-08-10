@@ -19,11 +19,6 @@ local Coordinate = {}
 Coordinate.__index = Coordinate
 
 
--- Namespace
-
-require("grazil.model").Coordinate = Coordinate
-
-
 
 
 --- Creates a new coordinate.

@@ -1,14 +1,6 @@
--- Copyright 2012 by Till Tantau
+-- Copyright 2016 by Till Tantau
 --
--- This file may be distributed an/or modified
---
--- 1. under the LaTeX Project Public License and/or
--- 2. under the GNU Public License
---
--- See the file doc/generic/pgf/licenses/LICENSE for more information
-
--- @release $Header: /cvsroot/pgf/pgf/generic/pgf/graphdrawing/lua/pgf/gd/model/Digraph.lua,v 1.7 2013/12/20 14:44:47 tantau Exp $
-
+-- This file may be distributed and/or modified under the GNU Public License 
 
 
 
@@ -201,14 +193,10 @@ Digraph.__index =
   end
 
 
-
--- Namespace
-require("pgf.gd.model").Digraph = Digraph
-
 -- Imports
-local Arc         = require "pgf.gd.model.Arc"
-local LookupTable = require "pgf.gd.lib.LookupTable"
-local Vertex      = require "pgf.gd.model.Vertex"
+local Arc         = require "grazil.model.Arc"
+local Vertex      = require "grazil.model.Vertex"
+local LookupTable = require "grazil.lib.LookupTable"
 
 
 

@@ -69,14 +69,10 @@ local Edge = {}
 Edge.__index = Edge
 
 
--- Namespace
-
-require("pgf.gd.model").Edge = Edge
-
 
 -- Imports
 
-local Path         = require "pgf.gd.model.Path"
+local Path         = require "grazil.draw.canvas.Path"
 
 
 --- 

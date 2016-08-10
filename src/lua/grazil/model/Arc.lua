@@ -1,13 +1,6 @@
--- Copyright 2012 by Till Tantau
+-- Copyright 2016 by Till Tantau
 --
--- This file may be distributed an/or modified
---
--- 1. under the LaTeX Project Public License and/or
--- 2. under the GNU Public License
---
--- See the file doc/generic/pgf/licenses/LICENSE for more information
-
--- @release $Header: /cvsroot/pgf/pgf/generic/pgf/graphdrawing/lua/pgf/gd/model/Arc.lua,v 1.8 2015/10/26 20:57:12 tantau Exp $
+-- This file may be distributed and/or modified under the GNU Public License 
 
 
 ---
@@ -81,15 +74,10 @@ local Arc = {}
 Arc.__index = Arc
 
 
--- Namespace
-
-require("pgf.gd.model").Arc = Arc
-
-
 -- Imports
 
-local Path = require 'pgf.gd.model.Path'
-local lib = require 'pgf.gd.lib'
+local Path = require 'grazil.draw.canvas.Path'
+local lib = require 'grazil.lib.namespace'
 
 
 ---
