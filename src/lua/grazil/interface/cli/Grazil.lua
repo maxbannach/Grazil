@@ -7,7 +7,7 @@
 Digraph = require 'grazil.model.Digraph'
 Vertex  = require 'grazil.model.Vertex'
 Arc     = require 'grazil.model.Arc'
-
+CoreBuilder = require 'grazil.build.CoreBuilder'
 
 while true do
 
