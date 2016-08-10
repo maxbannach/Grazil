@@ -15,7 +15,9 @@ while true do
 
   local fun = load (line)
 
-  fun()
+  if not pcall(fun) then
+     print("Unknown command: " .. line)
+  end
   
 end
 
