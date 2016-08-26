@@ -11,8 +11,8 @@ local random = math.random
 -- A class capsuling random generators such that the same (or different) random number 
 -- sequences can be generated from different objects.
 --
--- In detail, this class keeps track of the random numbers used from the given seed and will than generate
--- the next number of the sequence.
+-- In detail, this class will reseed whenever a random number is used. The seed sued by the class changes, depending on a previous used
+-- random number.
 --
 -- Using the class will change the (global) math.randomseed seed, but will, however, track all information's
 -- for one specific seed. I.e, if math.randomseed changes while using this class, the original random sequence
@@ -27,9 +27,6 @@ Random.__index = Random
 function Random.new(seed)
    local self = {}
    self.seed = seed or os.time()
-
-   -- pop 3 random numbers, for better random numbers on all operating systems
-   self.currentNumber = 3
    
    return setmetatable(self, Random)
 end
@@ -40,12 +37,12 @@ end
 --
 function Random:nextRandomNumber(lower, upper)
 
-   -- restart seed and "pop" used random numbers
+   -- restart seed and "pop" a few random numbers
    math.randomseed(self.seed)
-   for i = 1,self.currentNumber do
+   for i = 1,3 do
       random()
    end
-   self.currentNumber = self.currentNumber + 1
+   self.seed = random()  * math.pow(2,31)
 
    -- generate the random number to use
    if lower then
@@ -53,23 +50,6 @@ function Random:nextRandomNumber(lower, upper)
       return random(lower)
    end
    return random()
-end
-
----
--- Sets the index of the next random number that should be generated in the sequence.
--- The constructor sets this value to 4 and index should not be smaller then 4; and it can not be smaller then 1.
---
-function Random:setNextNumber(index)
-   assert( index >= 1, "The index of the sequence must be at least 1.")
-   self.currentNumber = index-1
-end
-
----
--- Reset the random sequence, i.e. @see nextRandomNumber() will generate the same
--- number as directly after the initialization.
---
-function Random:reset()
-   self.currentNumber = 3
 end
    
 -- done
