@@ -6,7 +6,8 @@
 
 -- imports
 local Sampler = require "grazil.sample.Sampler"
-
+local Digraph = require 'grazil.model.Digraph'
+local Vertex  = require 'grazil.model.Vertex'
 
 ---
 -- This class samples the Erdős–Rényi model G(n,p). That is the space of graphs with n

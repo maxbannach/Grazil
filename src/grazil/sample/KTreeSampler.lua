@@ -6,6 +6,8 @@
 
 -- imports
 local Sampler = require "grazil.sample.Sampler"
+local Digraph = require 'grazil.model.Digraph'
+local Vertex  = require 'grazil.model.Vertex'
 
 ---
 -- A k-tree is a maximal graph for a given tree width k.
@@ -19,7 +21,7 @@ KTreeSampler.__index = KTreeSampler
 -- Constructor
 --
 function KTreeSampler.new()
-   self = Sampler.new(g, seed)
+   local self = Sampler.new(g, seed)
 
    return setmetatable(self, KTreeSampler)
 end
